@@ -1,0 +1,42 @@
+	{
+	"schemaVersion": 1,
+	"id": "quantumui",
+	"version": "${version}",
+	"name": "QuantumUI",
+	"description": "Well...",
+	"authors": [
+		"timeworndevs"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/quantumui/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.timeworndevs.quantumui.Quantum"
+		],
+		"fabric-datagen": [
+			"net.timeworndevs.quantumui.QuantumDataGenerator"
+		],
+		"client": [
+			{
+				"value": "net.timeworndevs.quantumui.QuantumClient"
+			}
+		]
+	},
+	"mixins": [
+		"quantumui.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
