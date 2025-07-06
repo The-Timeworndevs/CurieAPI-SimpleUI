@@ -51,9 +51,12 @@ public class Quantum implements ModInitializer {
         data.forEach(read);
     }*/
     public static HashMap<String, JsonObject> new_radiation_types = new HashMap<>();
+    public static int cap = 100000;
+
 
     @Override
     public void onInitialize() {
+
         JsonParser parser = new JsonParser();
         new_radiation_types.put("alpha", (JsonObject) parser.parse("{\"name\": \"alpha\",\"color\": \"0.086f 0.2f 0.32f 1f\"}"));
         new_radiation_types.put("beta", (JsonObject) parser.parse("{\"name\": \"beta\",\"color\": \"0.22f 0.32f 0.21f 1f\"}"));
@@ -72,7 +75,7 @@ public class Quantum implements ModInitializer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        LOGGER.error(String.valueOf(files));
+        LOGGER.warn("Loading Curie configuration from files: {}", files);
 
         for (int i=0; i<files.size(); i++) {
             File file = new File(FabricLoader.getInstance().getConfigDir() + "/curie/" + files.toArray()[i]);
@@ -85,11 +88,17 @@ public class Quantum implements ModInitializer {
                 }
 
                 JsonObject json = JsonParser.parseReader(br).getAsJsonObject();
-
                 if (json.has("radiation_types")) {
                     for (JsonElement ele: json.get("radiation_types").getAsJsonArray()) {
                         new_radiation_types.put(ele.getAsJsonObject().get("name").getAsString(), ele.getAsJsonObject());
                     }
+                }
+
+                if (json.has("cap")) {
+                    if (cap != 100000) {
+                        LOGGER.warn("Radiation Cap defined multiple times.");
+                    }
+                    cap = json.get("cap").getAsInt();
                 }
             }
         }
@@ -100,7 +109,6 @@ public class Quantum implements ModInitializer {
         // Proceed with mild caution.
         LOGGER.info("Computing wave-functions...");
         NewRadiationHudOverlay.init();
-        LOGGER.info(String.valueOf(new_radiation_types));
         //ModRecipes.registerRecipes();
         LOGGER.info("Testing radiation...");
 

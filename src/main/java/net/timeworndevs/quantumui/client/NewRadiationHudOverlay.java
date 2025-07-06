@@ -55,8 +55,8 @@ public class NewRadiationHudOverlay {
             }
             RenderSystem.setShaderTexture(0, FILLED_DEFAULT);
             for(int i = 0; i < 10; i++) {
-                if(((IEntityDataSaver) MinecraftClient.getInstance().player).getPersistentData().getInt("radiation." + this.kind) > i*1000) {
-                    int maxProgress = 1000;
+                if(((IEntityDataSaver) MinecraftClient.getInstance().player).getPersistentData().getInt("radiation." + this.kind) > i*(Quantum.cap/10)) {
+                    int maxProgress = Quantum.cap/10;
                     int progress = ((IEntityDataSaver) MinecraftClient.getInstance().player).getPersistentData().getInt("radiation." + this.kind)-i*maxProgress;
 
                     int nwidth = progress != 0 ? progress * 10 / maxProgress : 0;
