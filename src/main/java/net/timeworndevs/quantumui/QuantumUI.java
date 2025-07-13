@@ -1,10 +1,6 @@
 package net.timeworndevs.quantumui;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.timeworndevs.quantum.util.QuantumConfig;
-import net.timeworndevs.quantumui.client.RadiationHudOverlay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
