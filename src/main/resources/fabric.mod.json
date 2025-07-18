@@ -12,31 +12,24 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/quantumui/icon.png",
-	"environment": "*",
+	"icon": "assets/curie-display/icon.png",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"net.timeworndevs.quantumui.Quantum"
-		],
-		"fabric-datagen": [
-			"net.timeworndevs.quantumui.QuantumDataGenerator"
-		],
 		"client": [
-			{
-				"value": "net.timeworndevs.quantumui.QuantumClient"
-			}
+		  "net.timeworndevs.curiedisplay.CurieDisplayClient"
 		]
 	},
 	"mixins": [
-		"quantumui.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.21",
+		"fabricloader": ">=0.15.11",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
+		"curie-api": "1.0.0",
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+	  "curie-content": "1.0.0",
+	  "another-mod": "*"
 	}
 }
